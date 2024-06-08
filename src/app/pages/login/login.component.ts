@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  private route = inject(Router);
+  userName: string = '';
+
+
+
+  login(){
+    localStorage.setItem('user', this.userName);
+    this.route.navigate(['home']);
+  }
 }
